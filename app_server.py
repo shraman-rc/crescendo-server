@@ -10,10 +10,12 @@ db = {} # Map group id's to list of FCM tokens (devices in group)
 
 FCM_SERVER_URL = "fcm-xmpp.googleapis.com"
 FCM_SERVER_PORT = 5236 # Pre-production
-FCM_SERVER_KEY = "AAAAHTT8-GA:APA91bG-tAzvRU_Vr-srRUDFeSOZ3kcqzaIeg2EwI9AJF0S8cvnZg2kxegbz-VQQJDXy8P2_N2Vp_jD6Th3RdVYP4N9bjXs54DJOx4kkPx_FliNhOpqESGpvPIJL9abJxepyyRr55uiV"
-FCM_SENDER_ID = "125443045472"
-FCM_JID = FCM_SENDER_ID + "@gcm.googleapis.com"
 FCM_SERVER_IP = socket.gethostbyname(FCM_SERVER_URL)
+with open("config.json") as f:
+  cfg = json.load(f)
+  FCM_SERVER_KEY = cfg["fcm"]["server_key"]
+  FCM_SENDER_ID = cfg["fcm"]["sender_id"]
+  FCM_JID = FCM_SENDER_ID + "@gcm.googleapis.com"
 
 @app.route('/')
 def hello_world():

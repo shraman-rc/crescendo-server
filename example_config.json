@@ -1,0 +1,6 @@
+{
+  "fcm" : {
+    "server_key" : "XXXXXXXXX...",
+    "sender_id" : "123456789123"
+  }
+}
